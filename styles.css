@@ -1,0 +1,902 @@
+/* styles.css: Todos os estilos do site, comentados linha a linha */
+
+/* Reset básico e fonte */
+body {
+  margin: 0; /* Remove margens padrão do navegador para evitar espaçamento indesejado */
+  font-family: 'Segoe UI', Arial, sans-serif; /* Define a fonte principal do site para melhor legibilidade */
+  background: #f8fafc; /* Define uma cor de fundo clara para o site */
+  color: #222; /* Define a cor padrão do texto para contraste */
+}
+
+/* Navbar fixa no topo, com fundo translúcido e barra inferior */
+.navbar {
+  position: fixed; /* Mantém a navbar visível no topo ao rolar a página */
+  top: 0; left: 0; right: 0; /* Alinha a navbar ao topo e laterais da tela */
+  width: 100%; /* Navbar ocupa toda a largura da tela */
+  background: #01855b(133 0% 51% / 0.75); /* Cor de fundo translúcida (corrigir se necessário) */
+  backdrop-filter: blur(10px); /* Aplica desfoque ao fundo da navbar para efeito moderno */
+  border-bottom: 1.5px solid #049250; /* Linha inferior para separar visualmente a navbar */
+  z-index: 1000; /* Garante que a navbar fique acima de outros elementos */
+  transition: box-shadow 0.3s; /* Suaviza a transição de sombra ao interagir */
+}
+
+/* Container centralizado da navbar */
+.navbar-container {
+  max-width: 1200px; /* Limita a largura máxima do container para centralizar o conteúdo */
+  margin: 0 auto; /* Centraliza o container horizontalmente */
+  padding: 0 1.5rem; /* Espaçamento interno nas laterais para não grudar nas bordas */
+  height: 64px; /* Altura fixa da navbar para consistência visual */
+  display: flex; /* Usa flexbox para alinhar itens horizontalmente */
+  align-items: center; /* Centraliza verticalmente os itens dentro da navbar */
+  justify-content: space-between; /* Espaça os itens nas extremidades do container */
+}
+
+/* Logo e título na navbar */
+.navbar-brand {
+  display: flex; /* Usa flexbox para alinhar logo e texto lado a lado */
+  align-items: center; /* Centraliza verticalmente logo e texto */
+}
+.navbar-logo {
+  height: 44px; /* Define a altura da logo para padronizar */
+  margin-right: 12px; /* Espaço entre a logo e o texto do título */
+}
+.navbar-title {
+  font-size: 1.35rem; /* Tamanho da fonte do título para destaque */
+  font-weight: 600; /* Deixa o título em negrito */
+  color: #222; /* Cor escura para o texto do título */
+}
+
+/* Botão do menu mobile (hamburguer) */
+.navbar-toggle {
+  display: none; /* Esconde o botão em telas grandes, mostra apenas em mobile */
+  background: none; /* Remove fundo do botão para visual limpo */
+  border: none; /* Remove borda do botão */
+  cursor: pointer; /* Cursor de mão ao passar para indicar interatividade */
+}
+.navbar-toggle-icon {
+  width: 28px; /* Largura do ícone hamburguer */
+  height: 3px; /* Altura da barra do ícone */
+  background: #444; /* Cor da barra */
+  display: block; /* Exibe como bloco */
+  border-radius: 2px; /* Bordas arredondadas para suavidade */
+  position: relative; /* Permite posicionar as barras extras */
+}
+.navbar-toggle-icon::before,
+.navbar-toggle-icon::after {
+  content: ''; /* Adiciona barras extras para o ícone hamburguer */
+  position: absolute; /* Posiciona relativamente ao ícone principal */
+  width: 28px; /* Largura igual à barra principal */
+  height: 3px; /* Altura igual à barra principal */
+  background: #444; /* Cor igual à barra principal */
+  border-radius: 2px; /* Bordas arredondadas */
+  transition: 0.3s; /* Suaviza transições ao abrir/fechar menu */
+}
+.navbar-toggle-icon::before {
+  top: -9px; /* Posiciona barra acima da principal */
+}
+.navbar-toggle-icon::after {
+  top: 9px; /* Posiciona barra abaixo da principal */
+}
+
+/* Links de navegação na navbar */
+.navbar-links {
+  display: flex; /* Usa flexbox para alinhar links horizontalmente */
+  gap: 2rem; /* Espaço entre os links para melhor navegação */
+}
+.nav-link {
+  padding: 6px 16px; /* Espaçamento interno dos links para área de clique maior */
+  border-bottom: 2.5px solid transparent; /* Borda inferior invisível por padrão */
+  border-radius: 6px 6px 0 0; /* Bordas arredondadas no topo para suavidade */
+  color: rgba(34,34,34,0.65); /* Cor do texto dos links, levemente opaca */
+  background: transparent; /* Fundo transparente para links */
+  font-weight: 500; /* Peso da fonte para destaque */
+  text-decoration: none; /* Remove sublinhado dos links */
+  transition: background 0.2s, color 0.2s, border 0.2s; /* Suaviza transições ao interagir */
+  text-shadow: 0 2px 6px rgba(0,63,45,0.10);
+}
+.nav-link.active {
+  background: #fff; /* Fundo branco para o link ativo */
+  color: #0e996b; /* Cor de destaque para o link ativo */
+  border-bottom: 2.5px solid #0e996b; /* Borda inferior colorida para indicar ativo */
+}
+.nav-link:hover {
+  color: #0e996b; /* Cor do texto ao passar o mouse */
+  background: rgba(255,255,255,0.7); /* Fundo levemente branco ao passar o mouse */
+}
+
+/* Responsividade do menu para telas menores */
+@media (max-width: 900px) {
+  .navbar-container {
+    padding: 0 0.5rem; /* Reduz o padding lateral para telas menores */
+  }
+  .navbar-links {
+    gap: 1rem; /* Reduz o espaço entre links em telas menores */
+  }
+}
+@media (max-width: 700px) {
+  .navbar-toggle {
+    display: block; /* Exibe o botão hamburguer em telas pequenas */
+  }
+  .navbar-links {
+    position: absolute; /* Sobrepõe o menu ao conteúdo */
+    top: 64px; /* Abaixo da navbar fixa */
+    left: 0; right: 0; /* Ocupa toda a largura */
+    background: rgba(255,255,255,0.97); /* Fundo branco quase opaco para menu mobile */
+    flex-direction: column; /* Empilha os links verticalmente */
+    align-items: center; /* Centraliza os links */
+    gap: 0; /* Remove espaço entre links */
+    border-bottom: 1.5px solid #e5e7eb; /* Linha inferior para separar menu */
+    display: none; /* Esconde por padrão, mostra ao abrir menu */
+    z-index: 999; /* Sobrepõe outros elementos */
+  }
+  .navbar-links.open {
+    display: flex; /* Exibe o menu ao abrir */
+  }
+  .nav-link {
+    width: 100%; /* Links ocupam toda a largura do menu mobile */
+    text-align: center; /* Centraliza texto dos links */
+    padding: 16px 0; /* Aumenta o padding vertical para área de toque */
+    border-radius: 0; /* Remove bordas arredondadas para menu mobile */
+    border-bottom: 1.5px solid #f1f5f9; /* Linha entre links para separação visual */
+  }
+}
+
+/* Espaço para o header fixo não sobrepor o conteúdo */
+body {
+  padding-top: 64px; /* Adiciona espaço no topo igual à navbar fixa */
+}
+
+/* Hero Section: área principal de destaque */
+.hero {
+  max-height: 300px; /* Limita a altura máxima da hero em desktop */
+  display: flex; /* Usa flexbox para centralizar conteúdo vertical e horizontalmente */
+  flex-direction: column; /* Organiza em coluna */
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center; /* Centraliza texto */
+  padding: 0 1rem; /* Espaçamento lateral */
+  position: relative; /* Permite posicionar a seta animada */
+  background: linear-gradient(rgba(0,63,45,0.9), rgba(0,63,45,0.9)), url('./images/imghome.png'); /* Overlay com 90% de opacidade */
+  background-size: cover; /* Cobre toda a área da hero */
+  background-position: center; /* Centraliza a imagem de fundo */
+  background-attachment: fixed; /* Fixa o fundo ao rolar (desktop) */
+  padding-top: 65px; /* Garante que a imagem de fundo fique abaixo da navbar fixa */
+}
+.hero-content {
+  margin-top: 60px; /* Espaço acima do conteúdo da hero */
+  margin-bottom: 60px; /* Espaço abaixo do conteúdo da hero */
+}
+.hero-title {
+  color: #fff; /* Cor do título para contraste com o fundo */
+  font-size: 2.5rem; /* Tamanho grande para destaque */
+  font-weight: 700; /* Negrito para o título */
+  margin-bottom: 1.5rem; /* Espaço abaixo do título */
+}
+.hero-subtitle {
+  color: #fff; /* Cor do subtítulo para contraste */
+  font-size: 1.25rem; /* Tamanho do subtítulo */
+  margin-bottom: 2.5rem; /* Espaço abaixo do subtítulo */
+}
+.whatsapp-btn {
+  display: inline-block; /* Exibe como bloco inline para alinhar com texto */
+  padding: 14px 32px; /* Espaçamento interno para área de clique confortável */
+  background: #059669; /* Cor de fundo verde para WhatsApp */
+  color: #fff; /* Cor do texto branco */
+  border: none; /* Remove borda padrão */
+  border-radius: 8px; /* Bordas arredondadas para suavidade */
+  font-size: 1.1rem; /* Tamanho da fonte do botão */
+  font-weight: 500; /* Peso da fonte para destaque */
+  text-decoration: none; /* Remove sublinhado */
+  transition: background 0.2s; /* Suaviza transição de cor ao passar o mouse */
+}
+.whatsapp-btn:hover {
+  background: #10b981; /* Cor mais clara ao passar o mouse */
+}
+.hero-arrow {
+  position: absolute; /* Posiciona a seta em relação à hero */
+  left: 50%; /* Centraliza horizontalmente */
+  bottom: 32px; /* Distância do fundo da hero */
+  transform: translateX(-50%); /* Ajusta para o centro exato */
+  animation: bounce 1.5s infinite; /* Animação de pulo para chamar atenção */
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); } /* Posição inicial/final da animação */
+  50% { transform: translateX(-50%) translateY(12px); } /* Posição no meio do pulo */
+}
+
+/* Plans Section: área dos planos */
+.plans {
+  background: #f1f5f9; /* Cor de fundo clara para destacar os cards */
+  min-height: 95vh; /* Altura mínima para ocupar boa parte da tela */
+  padding: 96px 1rem 64px 1rem; /* Espaçamento interno superior, lateral e inferior */
+  text-align: center; /* Centraliza texto da seção */
+}
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #059669;
+  letter-spacing: 0.02em;
+  text-shadow: 0 4px 16px rgba(0,63,45,0.13), 0 1px 2px rgba(0,0,0,0.08), 0 0 8px #fffbe7;
+  background: linear-gradient(90deg, #e0f2f1 0%, #fff 100%);
+  border-radius: 12px;
+  padding: 18px 0 18px 0;
+  margin-bottom: 2.5rem !important;
+  margin-top: -30px !important;
+  box-shadow: 0 2px 12px 0 rgba(0,63,45,0.08);
+  text-align: center;
+}
+.section-heading.mb-5 {
+  margin-bottom: 2.5rem !important;
+  margin-top: -30px !important;
+}
+.plans-cards {
+  display: grid; /* Usa grid para organizar os cards */
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); /* Responsivo: mínimo 290px, máximo 1fr */
+  gap: 2rem; /* Espaço entre os cards */
+  max-width: 1100px; /* Largura máxima dos cards */
+  margin: 0 auto; /* Centraliza os cards na seção */
+}
+.plan-card {
+  background: #fff; /* Fundo branco para destacar o conteúdo */
+  border: 1.5px solid #e5e7eb; /* Borda leve para separar visualmente */
+  border-radius: 16px; /* Bordas arredondadas para suavidade */
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.04); /* Sombra leve para profundidade */
+  display: flex; /* Flexbox para alinhar conteúdo verticalmente */
+  flex-direction: column; /* Organiza em coluna */
+  justify-content: stretch; /* Estica o conteúdo para ocupar todo o card */
+  min-height: 100%; /* Garante altura igual entre os cards */
+  transition: box-shadow 0.2s, border 0.2s; /* Suaviza transições ao interagir */
+}
+.plan-card .card-body {
+  flex: 1 1 auto; /* Permite crescer e encolher conforme o conteúdo */
+  display: flex; /* Flexbox para alinhar conteúdo verticalmente */
+  flex-direction: column; /* Organiza em coluna */
+  justify-content: flex-start; /* Alinha o conteúdo ao topo do card */
+}
+.plan-card .plan-cta {
+  margin-top: auto; /* Empurra o botão para o final do card */
+  margin-bottom: 3px; /* Espaço inferior do botão para não grudar na borda */
+}
+.plan-card:hover {
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10); /* Sombra mais forte ao passar o mouse */
+  border-color: #059669; /* Borda verde ao passar o mouse */
+}
+.plan-card-highlighted {
+  border: 3px solid #059669; /* Borda mais grossa para destacar o card */
+  box-shadow: 0 6px 32px 0 rgba(0,63,45,0.10); /* Sombra mais forte para destaque */
+}
+.plan-card-header {
+  padding: 2rem 1.5rem 1rem 1.5rem; /* Espaçamento interno do cabeçalho do card */
+  background: #fff; /* Fundo branco para o cabeçalho */
+  border-radius: 16px 16px 0 0; /* Bordas arredondadas no topo do card */
+}
+.plan-card-highlighted .plan-card-header {
+  background: #059669; /* Fundo verde para o card destacado */
+  color: #fff; /* Texto branco para contraste */
+}
+.plan-card-header h3 {
+  font-size: 1.3rem; /* Tamanho do nome do plano */
+  font-weight: 700; /* Negrito para destaque */
+  margin-bottom: 0.5rem; /* Espaço abaixo do nome do plano */
+}
+.plan-price {
+  font-size: 2rem; /* Tamanho grande para o preço */
+  font-weight: 700; /* Negrito para destaque */
+  color: #000; /* Cor do preço agora preta para melhor contraste */
+}
+.plan-price {
+  color: #000000 !important;
+}
+.plan-period {
+  font-size: 0.95rem; /* Tamanho do texto do período */
+  color: #ffffff; /* Cor do período (corrigir se necessário) */
+  margin-left: 8px; /* Espaço à esquerda do período */
+}
+.plan-card-highlighted .plan-period {
+  color: #e0f2f1; /* Cor do período no card destacado */
+}
+.plan-features {
+  list-style: none; /* Remove marcadores da lista para visual limpo */
+  padding: 0 1.5rem 1.5rem 1.5rem; /* Espaçamento interno da lista */
+  margin: 0; /* Remove margens padrão */
+  text-align: left; /* Alinha texto à esquerda para melhor leitura */
+}
+.plan-features li {
+  margin-bottom: 0.7rem; /* Espaço entre itens da lista */
+  color: #444; /* Cor do texto dos itens */
+  padding-left: 1.2em; /* Espaço para o ícone de check */
+  position: relative; /* Permite posicionar o ícone */
+}
+.plan-features li::before {
+  content: '\2713'; /* Ícone de check para cada item */
+  color: #059669; /* Cor verde para o ícone */
+  position: absolute; /* Posiciona o ícone à esquerda do texto */
+  left: 0; /* Alinha o ícone à esquerda */
+  font-size: 1.1em; /* Tamanho do ícone */
+}
+.plan-cta {
+  display: block; /* Exibe o botão como bloco para ocupar toda a largura */
+  margin: 1.5rem 3px 3px 3px; /* Espaço ao redor do botão, 3px das bordas laterais e inferior */
+  padding: 12px 0; /* Espaçamento interno do botão */
+  background: #fff; /* Fundo branco para o botão */
+  color: #059669; /* Cor do texto verde */
+  border: 2px solid #059669; /* Borda verde para destaque */
+  border-radius: 8px; /* Bordas arredondadas para suavidade */
+  font-weight: 600; /* Negrito para destaque */
+  text-decoration: none; /* Remove sublinhado */
+  transition: background 0.2s, color 0.2s; /* Suaviza transições ao interagir */
+}
+.plan-cta:hover {
+  background: #059669; /* Fundo verde ao passar o mouse */
+  color: #fff; /* Texto branco ao passar o mouse */
+}
+.plan-cta-highlighted {
+  background: #059669; /* Fundo verde para botão destacado */
+  color: #fff; /* Texto branco */
+  border: 2px solid #059669; /* Borda verde */
+}
+.plan-cta-highlighted:hover {
+  background: #10b981; /* Fundo verde claro ao passar o mouse */
+  border-color: #10b981; /* Borda verde claro */
+}
+.plans-extra {
+  margin-top: 50px !important;
+  color: #111 !important;
+  transition: color 0.3s;
+}
+
+.plans-extra-mt4 {
+  margin-top: 0 !important;
+}
+
+.plans-extra h4 {
+  font-size: 1.5rem; /* Tamanho do texto do aviso extra */
+  min-width: 100vh; /* Largura mínima (corrigir se necessário) */
+  font-weight: 50; /* Peso da fonte (corrigir se necessário) */
+  color: #000000; /* Cor preta para destaque */
+  margin-bottom: 1.5rem; /* Espaço abaixo do texto */
+  text-align: center; /* Centraliza o texto */
+  color: #000000; /* Cor do texto */
+}
+.plans-extra h4 {
+  color: #000 !important;
+  font-size: 20px !important;
+}
+.plans-extra h3 {
+  color: #000000; /* Cor verde para o texto */
+  font-size: 1.3rem; /* Tamanho do texto */
+  font-weight: 700; /* Negrito para destaque */
+  margin-bottom: 0.7rem; /* Espaço abaixo do texto */
+}
+.plans-extra p {
+  font-size: 1.1rem; /* Tamanho do texto */
+  margin-bottom: 1.2rem; /* Espaço abaixo do texto */
+}
+.plans-extra .btn.btn-success.btn-lg.mt-2 {
+  margin-top: 0.5px !important;
+}
+
+/* Footer: rodapé do site */
+.footer {
+  min-height: 95vh; /* Altura mínima do rodapé para ocupar espaço visual */
+  background: #059669; /* Cor de fundo verde escuro */
+  color: #fff; /* Cor do texto branco */
+  padding: 64px 1rem 0 1rem; /* Espaçamento interno superior, lateral e inferior */
+  margin-top: 0; /* Remove margem superior */
+}
+.footer-container {
+  max-width: 1200px; /* Largura máxima do container do rodapé */
+  margin: 0 auto; /* Centraliza o container */
+  display: grid; /* Usa grid para as colunas do rodapé */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Responsivo: mínimo 260px, máximo 1fr */
+  gap: 2.5rem; /* Espaço entre colunas */
+  padding-bottom: 32px; /* Espaço inferior do rodapé */
+}
+.footer-about h3,
+.footer-contact h3,
+.footer-hours h3 {
+  font-family: 'Roboto Slab', serif;
+  font-style: italic;
+  font-weight: 600;
+  color: #fffbe7;
+  letter-spacing: 0.04em;
+  font-size: 1.2rem; /* Tamanho do título das colunas */
+  margin-bottom: 1rem; /* Espaço abaixo do título */
+  text-shadow: 0 2px 8px rgba(0,63,45,0.12), 0 1px 2px rgba(0,0,0,0.08);
+}
+.footer-about p {
+  margin-bottom: 1.2rem; /* Espaço abaixo do texto da descrição */
+}
+.footer-social {
+  display: flex; /* Flexbox para alinhar ícones de redes sociais */
+  gap: 1.2rem; /* Espaço entre ícones */
+  margin-top: 0.5rem; /* Espaço acima dos ícones */
+}
+.footer-icon {
+  width: 24px; /* Largura dos ícones sociais */
+  height: 24px; /* Altura dos ícones sociais */
+  display: inline-block; /* Exibe como bloco inline */
+  vertical-align: middle; /* Alinha verticalmente com o texto */
+  filter: brightness(0) invert(1); /* Deixa o ícone branco para contraste */
+}
+.footer-contact ul,
+.footer-hours ul {
+  list-style: none; /* Remove marcadores das listas do rodapé */
+  padding: 0; /* Remove padding padrão */
+  margin: 0; /* Remove margem padrão */
+}
+.footer-contact li,
+.footer-hours li {
+  margin-bottom: 0.7rem; /* Espaço entre itens das listas */
+  font-size: 1rem; /* Tamanho do texto dos itens */
+}
+.footer-hours-img {
+  width: 100%; /* Imagem ocupa toda a largura disponível */
+  max-width: 220px; /* Largura máxima da imagem */
+  border-radius: 8px; /* Bordas arredondadas para suavidade */
+  margin-bottom: 1rem; /* Espaço abaixo da imagem */
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10); /* Sombra leve para profundidade */
+}
+.footer-bottom {
+  border-top: 1.5px solid #047857; /* Linha superior para separar rodapé inferior */
+  margin-top: 2.5rem; /* Espaço acima do rodapé inferior */
+  padding: 2rem 0 1.5rem 0; /* Espaçamento interno do rodapé inferior */
+  text-align: center; /* Centraliza texto do rodapé inferior */
+  font-size: 1rem; /* Tamanho do texto do rodapé inferior */
+}
+.footer-copy {
+  font-size: 0.95rem; /* Tamanho do texto de direitos autorais */
+  margin-top: 0.7rem; /* Espaço acima do texto */
+  color: #e0f2f1; /* Cor clara para o texto de direitos autorais */
+}
+
+/* Imagens de contato no footer alinhadas e do mesmo tamanho */
+.footer-contact img {
+  width: 40px; /* Largura fixa para padronizar */
+  height: 40px; /* Altura fixa para padronizar */
+  object-fit: cover; /* Corta a imagem para caber no espaço */
+  border-radius: 8px; /* Bordas arredondadas para suavidade */
+  margin-right: 8px; /* Espaço à direita da imagem */
+  vertical-align: middle; /* Alinha verticalmente com o texto */
+}
+
+/* Animação fade-in para elementos ao rolar a página */
+.fade-in-element {
+  opacity: 0; /* Inicialmente invisível para animação */
+  transform: translateY(24px); /* Desloca para baixo para efeito de entrada */
+  transition: opacity 0.6s, transform 0.6s; /* Suaviza transições de opacidade e posição */
+}
+.fade-in-element.appear {
+  opacity: 1; /* Torna visível ao aparecer */
+  transform: translateY(0); /* Volta à posição original */
+}
+
+/* Bordas arredondadas para todos os iframes */
+iframe {
+  border-radius: 16px; /* Bordas arredondadas para iframes (ex: mapa) */
+  overflow: hidden; /* Esconde conteúdo fora das bordas arredondadas */
+}
+
+/* Responsividade mobile: ajustes para telas pequenas */
+@media (max-width: 767.98px) {
+  .hero {
+    min-height: 60vh; /* Reduz altura mínima da hero em mobile */
+    max-height: none; /* Remove limitação de altura máxima */
+    padding: 2rem 0.5rem; /* Reduz padding lateral */
+    background-attachment: scroll; /* Remove fixação do fundo em mobile */
+  }
+  .hero-title {
+    font-size: 1.5rem; /* Reduz tamanho do título em mobile */
+  }
+  .hero-subtitle {
+    font-size: 1rem; /* Reduz tamanho do subtítulo em mobile */
+  }
+  .plans-cards, .footer-container {
+    grid-template-columns: 1fr; /* Cards e colunas do rodapé ocupam toda a largura */
+    gap: 1rem; /* Reduz espaço entre cards/colunas */
+  }
+  .plan-card {
+    min-width: 0; /* Remove largura mínima para caber na tela */
+    max-width: 100%; /* Garante que o card não ultrapasse a tela */
+  }
+  .footer img, .footer-hours-img {
+    max-width: 100%; /* Imagens ocupam toda a largura disponível */
+    height: auto; /* Mantém proporção da imagem */
+  }
+  .footer .footer-social {
+    justify-content: center; /* Centraliza ícones sociais em mobile */
+  }
+  .footer .col-md-4 {
+    margin-bottom: 2rem; /* Espaço extra entre colunas em mobile */
+  }
+  .plans-extra h4 {
+    font-size: 1.1rem; /* Reduz tamanho do texto extra em mobile */
+    min-width: unset; /* Remove largura mínima */
+  }
+  .plan-price {
+    color: #ffffff;
+    font-size: 1.3rem; /* Reduz tamanho do preço em mobile */
+  }
+  .plan-card .plan-cta {
+    font-size: 1rem; /* Reduz tamanho do botão em mobile */
+    padding: 10px 0; /* Reduz padding do botão em mobile */
+  }
+}
+
+/* Ajusta opacidade das partículas no JS (cor hsla) para 0.9 */
+.plans-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 0; /* Remove espaço extra abaixo do carrossel */
+  gap: 0;
+}
+.plans-arrow {
+  background: #fff;
+  border: 2px solid #059669;
+  color: #059669;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+.plans-arrow:hover {
+  background: #059669;
+  color: #fff;
+}
+.plans-arrow.left {
+  left: 60px;
+  margin-right: 510px;
+}
+.plans-arrow.right {
+  right: 60px;
+  margin-left: 510px;
+}
+.plans-carousel {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 480px;
+  overflow: visible;
+  gap: 0;
+}
+.plans-carousel .row {
+  display: flex;
+  flex-wrap: nowrap;
+  width: auto;
+  margin: 0;
+  position: relative;
+  justify-content: center;
+}
+.plans-carousel .col-12 {
+  position: relative;
+  left: 0;
+  top: 0;
+  transform: scale(0.92);
+  opacity: 0.7;
+  z-index: 1;
+  min-width: 340px;
+  max-width: 400px;
+  margin: 0 0.5rem;
+  transition: transform 0.9s cubic-bezier(.4,1.5,.6,1), box-shadow 0.5s, opacity 0.5s, z-index 0s;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  pointer-events: none;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10); /* Sombra suave padrão */
+}
+.plans-carousel .col-12.active {
+  /* Remove fundo branco e borda branca, mantém apenas sombra e destaque */
+  background: transparent;
+  border: none;
+  transform: scale(1.08);
+  z-index: 3;
+  opacity: 1;
+  box-shadow: 0 12px 40px 0 rgba(0,63,45,0.18), 0 2px 12px 0 rgba(0,0,0,0.10);
+  pointer-events: auto;
+}
+.plans-carousel .col-12.inactive {
+  filter: blur(0.5px);
+  z-index: 1;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.plans-carousel .col-12:last-child {
+  margin-right: 0;
+}
+.plans-carousel .col-12.active {
+  transform: scale(1.12);
+  z-index: 2;
+  box-shadow: 0 8px 32px 0 rgba(0,63,45,0.18);
+}
+.plans-carousel .col-12.inactive {
+  opacity: 0.6;
+  filter: blur(1px);
+  z-index: 1;
+}
+.plans-carousel .col-12 .card.h-100 {
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: none;
+}
+.plans-carousel .col-12.active .card.h-100 {
+  /* Card ativo: sombra mais forte, sem borda branca extra */
+  border: 2.5px solid #059669;
+  box-shadow: 0 16px 48px 0 rgba(0,63,45,0.18), 0 4px 16px 0 rgba(0,0,0,0.10);
+}
+.plans-carousel .col-12 .card.h-100 {
+  height: 100%;
+  min-height: unset;
+  display: flex;
+  flex-direction: column;
+}
+.plans-carousel .col-12 .card-body.flex-grow-1 {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 0;
+}
+.card.h-100 {
+  min-height: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.card-body.flex-grow-1 {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 0;
+}
+.card-title {
+  word-break: break-word;
+}
+@media (max-width: 900px) {
+  .plans-carousel-wrapper {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+  .plans-arrow {
+    top: 50%;
+    left: 8px;
+    right: 8px;
+    transform: translateY(-50%);
+  }
+  .plans-arrow.left {
+    left: 0;
+    right: auto;
+  }
+  .plans-arrow.right {
+    right: 0;
+    left: auto;
+  }
+  .plans-carousel {
+    flex-direction: column;
+    align-items: center;
+    min-height: unset;
+  }
+  .plans-carousel .row {
+    flex-direction: column;
+  }
+  .plans-carousel .col-12 {
+    margin: 0 0 1.5rem 0;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .plans-carousel-wrapper {
+    margin-bottom: 120px;
+  }
+}
+@media (max-width: 575.98px) {
+  .plans-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+  .plans-carousel .col-12 {
+    min-width: 0;
+    max-width: 100%;
+    margin: 0 0 1rem 0;
+  }
+}
+
+/* Melhorias de responsividade para mobile */
+@media (max-width: 575.98px) {
+  .hero {
+    padding: 1.5rem 0.2rem;
+    font-size: 0.95rem;
+  }
+  .plans {
+    padding: 60px 0.2rem 32px 0.2rem;
+  }
+  .plans-carousel .col-12 {
+    min-width: 0;
+    max-width: 100%;
+    margin: 0 0 1rem 0;
+  }
+  .footer {
+    padding: 32px 0.2rem 0 0.2rem;
+  }
+  .footer .col-md-4 {
+    margin-bottom: 1.2rem;
+  }
+  .footer img, .footer-hours-img {
+    max-width: 100%;
+    height: auto;
+  }
+  .plans-extra h4 {
+    font-size: 1rem;
+  }
+  .plan-card .plan-cta {
+    font-size: 0.95rem;
+    padding: 8px 0;
+  }
+  .navbar .nav-link {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+}
+
+/* --- FONTES DIFERENCIADAS --- */
+
+/* Menu principal (navbar) */
+.navbar .nav-link {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 1.08rem;
+  text-shadow: 0 2px 6px rgba(0,63,45,0.10);
+}
+
+/* Ajuste para o título do menu mobile */
+@media (max-width: 700px) {
+  .navbar .nav-link {
+    font-size: 1.15rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+/* Adiciona regras CSS para exibir apenas um card do carrossel por vez, centralizando-o e ocultando os demais. Garante responsividade para desktop e mobile */
+.plans-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+  width: 100%;
+  align-items: stretch;
+}
+.plan-carousel-item {
+  display: none;
+  flex: 1 0 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  transition: opacity 0.7s cubic-bezier(.4,1.5,.6,1), transform 0.7s cubic-bezier(.4,1.5,.6,1);
+  opacity: 0;
+  z-index: 1;
+  align-items: stretch;
+  min-height: 0;
+}
+.plan-carousel-item.active {
+  display: flex;
+  opacity: 1;
+  z-index: 2;
+  transform: scale(1.05);
+  transition: opacity 0.7s cubic-bezier(.4,1.5,.6,1), transform 0.7s cubic-bezier(.4,1.5,.6,1);
+}
+.plan-carousel-item.inactive {
+  display: none;
+  opacity: 0;
+  z-index: 1;
+}
+@media (max-width: 900px) {
+  .plans-carousel {
+    min-height: unset;
+  }
+  .plan-carousel-item {
+    max-width: 98vw;
+  }
+}
+@media (max-width: 575.98px) {
+  .plan-carousel-item {
+    max-width: 100vw;
+    min-width: 0;
+  }
+}
+
+/* Ajuste dinâmico para altura igual dos cards do carrossel */
+@media (min-width: 0px) {
+  .plans-carousel {
+    min-height: unset;
+  }
+}
+
+/* --- AJUSTES CARROSSEL DE PLANOS --- */
+.plans-carousel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  position: relative;
+  min-height: 0;
+  overflow: visible;
+  width: 100%;
+}
+.plan-carousel-item {
+  display: none;
+  flex: 1 1 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  transition: opacity 0.7s cubic-bezier(.4,1.5,.6,1), transform 0.7s cubic-bezier(.4,1.5,.6,1);
+  opacity: 0;
+  z-index: 1;
+  align-items: stretch;
+  min-height: 0;
+  height: auto;
+}
+.plan-carousel-item.active {
+  display: flex;
+  opacity: 1;
+  z-index: 2;
+  transform: scale(1.05);
+  height: auto;
+  transition: opacity 0.7s cubic-bezier(.4,1.5,.6,1), transform 0.7s cubic-bezier(.4,1.5,.6,1);
+}
+.plan-carousel-item .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 340px;
+  max-height: 100%;
+}
+.plan-carousel-item .card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 0;
+  overflow: visible;
+}
+@media (max-width: 900px) {
+  .plans-carousel {
+    flex-direction: column;
+    min-height: unset;
+  }
+  .plan-carousel-item {
+    max-width: 98vw;
+    min-height: 0;
+  }
+}
+@media (max-width: 575.98px) {
+  .plan-carousel-item {
+    max-width: 100vw;
+    min-width: 0;
+    min-height: 0;
+  }
+  .plan-carousel-item .card {
+    min-height: 220px;
+  }
+}
+
+.preco-branco {
+  color: #fff !important;
+}

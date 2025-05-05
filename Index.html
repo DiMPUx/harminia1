@@ -1,0 +1,199 @@
+<!-- Index.html: Estrutura principal da página, comentada linha a linha -->
+<!DOCTYPE html> <!-- Declara o tipo de documento como HTML5 -->
+<html lang="pt-br"> <!-- Início do documento HTML, idioma definido como português do Brasil -->
+<head>
+  <meta charset="UTF-8"> <!-- Define a codificação de caracteres para UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade -->
+  <title>Espaço Harmonia</title> <!-- Título da aba -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> <!-- FontAwesome -->
+  <link rel="stylesheet" href="styles.css"> <!-- CSS customizado -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Playfair+Display:wght@700&family=Roboto+Slab:ital,wght@1,600&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+</head>
+<body>
+  <!-- Navbar fixa no topo -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top"> 
+    <div class="container"> <!-- Container centraliza navbar -->
+      <a class="navbar-brand d-flex align-items-center" href="#home"> <!-- Logo e nome -->
+        <img src="./images/favicon.png" alt="Espaço Harmonia Logo" width="40" class="me-2"> <!-- Logo -->
+        <span class="fw-bold">Espaço Harmonia</span> <!-- Nome do site -->
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <!-- Botão mobile -->
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav"> <!-- Menu colapsável -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!-- Links -->
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li> <!-- Home -->
+          <li class="nav-item"><a class="nav-link" href="#planos">Planos</a></li> <!-- Planos -->
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li> <!-- Sobre -->
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li> <!-- Contato -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Hero Section: destaque principal -->
+  <section id="home" class="hero d-flex align-items-center justify-content-center text-center" style="min-height:95vh;"> 
+    <div class="container"> <!-- Centraliza conteúdo -->
+      <div class="row justify-content-center"> <!-- Linha centralizada -->
+        <div class="col-lg-8"> <!-- Coluna central -->
+          <h1 class="display-4 fw-bold text-white mb-4">Transforme sua vida com orientação profissional</h1> <!-- Título -->
+          <p class="lead text-white mb-4">Consultoria fitness personalizada com atendimento presencial e online. Sua evolução começa agora.</p> <!-- Subtítulo -->
+          <a href="https://wa.me/553197666203" class="btn btn-success btn-lg mb-4" target="_blank" rel="noopener noreferrer"> <!-- Botão WhatsApp -->
+            <i class="fab fa-whatsapp me-2"></i>Fale com Thiago no WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="hero-arrow mt-5"> <!-- Seta para baixo -->
+        <a href="#planos" class="arrow-link text-white" aria-label="Ir para Planos"> <!-- Link para planos -->
+          <i class="fa-solid fa-chevron-down fa-2x"></i> <!-- Ícone seta -->
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- Plans Section: planos de serviço -->
+  <section id="planos" class="plans py-5 bg-light"> 
+    <div id="fruta-bg" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;"></div>
+    <div class="container" style="position:relative;z-index:1;"> <!-- Centraliza conteúdo -->
+      <h2 class="section-heading mb-5">Nossos Planos</h2> <!-- Título da seção -->
+      <div class="plans-carousel-wrapper position-relative"> <!-- Carrossel -->
+        <button class="plans-arrow left" aria-label="Plano anterior"><i class="fa fa-chevron-left"></i></button>
+        <div class="plans-carousel"> <!-- Cards -->
+          <!-- Plano 1 -->
+          <div class="plan-carousel-item col-12 plan-card-online"> <!-- Card 1: Online -->
+            <div class="card h-100 shadow-sm w-100 d-flex flex-column plan-card-online"> <!-- Card -->
+              <div class="card-body d-flex flex-column flex-grow-1"> <!-- Corpo do card -->
+                <h3 class="card-title">Consultoria Online</h3>
+                <div class="plan-price h2 text-success">R$300 <span class="plan-period small text-muted"><br>90 dias de acompanhamento</span></div>
+                <ul class="list-unstyled mt-3 mb-4 flex-grow-1">
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Plano de Treino</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Planejamento Alimentar</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Recomendação de suplementos e manipulados</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Protocolos hormonais (opcionais)</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Avaliação da evolução do aluno de 30 em 30 dias</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Contato via WhatsApp diretamente com Thiago</li>
+                </ul>
+                <a href="https://wa.me/5531975180173" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success w-100 plan-cta mt-auto">Contratar agora</a>
+              </div>
+            </div>
+          </div>
+          <!-- Plano 2 -->
+          <div class="plan-carousel-item col-12 plan-card-presencial"> <!-- Card 2: Presencial -->
+            <div class="card h-100 shadow border-success border-3 w-100 d-flex flex-column plan-card-presencial"> <!-- Card destaque Plano 2-->
+              <div class="card-body bg-success text-white rounded-top"> <!-- Cabeçalho verde -->
+                <h3 class="card-title">Consultoria Presencial</h3>
+                <div class="plan-price h2"><span class="preco-branco">R$450</span><span class="plan-period small"><br>90 dias de acompanhamento</span></div>
+              </div>
+              <div class="card-body d-flex flex-column flex-grow-1">
+                <ul class="list-unstyled mt-3 mb-4 flex-grow-1">
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Plano de Treino</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Planejamento Alimentar</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Recomendação de suplementos e manipulados</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Protocolos hormonais (opcionais)</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Avaliação da evolução do aluno de 30 em 30 dias</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Contato via WhatsApp diretamente com Thiago</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Avaliação postural completa</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Medidas e bioimpedância</li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>3 reavaliações durante os 90 dias</li>
+                </ul>
+                <a href="https://wa.me/553197666203" target="_blank" rel="noopener noreferrer" class="btn btn-success w-100 plan-cta mt-auto">Contratar agora</a>
+              </div>
+            </div>
+          </div>
+          <!-- Plano 3 -->
+          <div class="plan-carousel-item col-12 plan-card-avulso"> <!-- Card 3: Avulsos -->
+            <div class="card h-100 shadow-sm w-100 d-flex flex-column plan-card-avulso">
+              <div class="card-body d-flex flex-column flex-grow-1">
+                <h3 class="card-title">Planos Avulsos</h3>
+                <div class="plan-price h2 text-success">R$60 <span class="plan-period small text-muted"><br>a partir de</span></div>
+                <ul class="list-unstyled mt-3 mb-4 flex-grow-1">
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Planejamento Alimentar individual. - <strong>R$180</strong> <br><em>"Montagem de ciclo (opcional)"</em></li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Ficha de Treino individual. - <strong>R$120</strong></li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Protocolo Completo sem Acompanhamento. - <strong>R$220</strong></li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>Montagem de Ciclos Personalizado com controle de efeitos colaterais - <strong>R$60</strong></li>
+                  <li><i class="fa-solid fa-check text-success me-2"></i>TPC (Terapia Pós Ciclo) e recuperação dos testiculos e fertilidade - <strong>R$150</strong></li>
+                </ul>
+                <a href="https://wa.me/553197666203" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success w-100 plan-cta mt-auto">Saiba mais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="plans-arrow right" aria-label="Próximo plano"><i class="fa fa-chevron-right"></i></button>
+      </div>
+      <div class="plans-extra mt-4"> <!-- Bloco extra -->
+        <h4 class="text-success"><em>Entrega em até 3 dias úteis após adquirir qualquer um de nosso Planos.</em></h4>
+        <h3 class="text-success">Espaço Harmonia desenvolve seu protocolo completo.</h3>
+      </div>
+    </div>
+  </section>
+  <!-- Sobre Section: informações sobre o serviço -->
+  <section id="sobre" class="py-5 bg-white">
+    <div class="container">
+      <h2 class="section-heading mb-5">Sobre</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <p class="lead" id="sobre-texto">
+            <!-- Espaço reservado para inserir o texto sobre o serviço -->
+            Transforme seu corpo e sua mente com acompanhamento completo e personalizado.<br>
+            Nosso objetivo é ajudar você a conquistar resultados reais com um protocolo 100% individualizado, que inclui:<br>
+            
+
+            ✔️ <strong>Treinamento estruturado de acordo com seu nível e rotina.</strong><br>
+            ✔️ <strong>Planejamento alimentar personalizado conforme suas metas.</strong><br>
+            ✔️ <strong>Estratégias de suplementação eficazes.</strong><br>
+            ✔️ <strong>Indicações de manipulados naturais para melhorar humor, reduzir ansiedade, controlar compulsões e otimizar a qualidade do sono — pilares fundamentais para quem busca hipertrofia, emagrecimento ou bem-estar completo.</strong><br><br>
+            
+            Tudo isso com acompanhamento profissional e suporte contínuo, tanto no online quanto no presencial.
+          </p>
+          <center><p><strong>Missão:</strong> Fazer você alcançar a sua melhor versão!</center></p>
+          <a href="https://wa.me/553197666203" class="btn btn-success btn-lg mt-2" target="_blank" rel="noopener noreferrer">
+          <center><i class="fab fa-whatsapp me-2"></i>Agende sua avaliação</center></a>
+          <div class="d-flex align-items-center justify-content-center mt-4">
+            <img src="./images/favicon2.png" alt="Espaço Harmonia" width="100" height="100" style="object-fit:contain;" class="me-3">
+            <span class="fs-4 fw-bold">Espaço Harmonia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer: rodapé -->
+  <footer class="footer bg-success text-white pt-5" id="contato"> 
+    <div class="container"> <!-- Centraliza rodapé -->
+      <div class="row g-4"> <!-- Linha de colunas -->
+        <div class="col-md-4 mb-4"> <!-- Coluna 1 -->
+          <h3>Espaço Harmonia</h3>
+          <p>Transformando vidas através da orientação profissional, fitness proporcionando qualidade de vida e Saúde e bem estar.</p>
+          <div class="footer-social d-flex gap-3 mb-3">
+            <a href="https://instagram.com/thiago.luiz13" target="_blank" rel="noopener noreferrer" title="Instagram" class="text-white fs-4"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:contato@espacoharmonia.com.br" title="E-mail" class="text-white fs-4"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+553197666203" title="Telefone" class="text-white fs-4"><i class="fas fa-phone"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4"> <!-- Coluna 2 -->
+          <h3>Contato</h3>
+          <li><i class="fas fa-phone me-2"></i>(31) 97666-203</li>
+        <li><i class="fas fa-envelope me-2"></i>contato@espacoharmonia.com.br</li>
+        <li><i class="fas fa-map-marker-alt me-2"></i>Rua Gumercindo Couto e Silva, 813 Sala 202 - Itapoã</li>
+        </div>
+        <div class="col-md-4 mb-4"> <!-- Coluna 3 -->
+          <h3>Horário</h3>
+          <li>Segunda - Sexta: 07:00 - 21:00</li>
+          <li>Sábados: 08:00 - 15:00</li>
+          <li>Domingos: Fechado</li>
+          </ul>
+          <br>
+          <ul class="list-unstyled">
+        </div>
+      </div>
+      <ul class="list-unstyled">
+        <li><br><div class="ratio ratio-4x3"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3752.9508295460546!2d-43.96052532492647!3d-19.842033335575028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6901134a83ba5%3A0x9addcaaf1a1a4d8a!2sR.%20Gumercindo%20Couto%20e%20Silva%2C%20813%20-%20Itapoã%2C%20Belo%20Horizonte%20-%20MG%2C%2031710-050!5e0!3m2!1spt-BR!2sbr!4v1746333582531!5m2!1spt-BR!2sbr" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Espaço Harmonia" style="border: 0;"></iframe></div></li>
+      </ul>
+      <div class="footer-bottom border-top border-white mt-5 pt-3 text-center">
+        <p>@thiago.luiz13</p>
+        <p class="footer-copy">&copy; <span id="year"></span> Espaço Harmonia - Todos os direitos reservados</p>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap JS -->
+  <script src="script.js"></script> <!-- Script customizado -->
+</body>
+</html>
